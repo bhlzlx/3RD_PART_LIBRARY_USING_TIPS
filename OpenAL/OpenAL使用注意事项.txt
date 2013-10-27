@@ -1,0 +1,7 @@
+OpenAL使用注意事项
+
+1.获取设备上下文（ALCContext）之后最好立即设置它当前为零，
+	因为生成其它资源的时候如果没有任何当前设备上下文的话，那么生成资源（ALBuffer,ALResource）就会失败
+
+2.在使用alBufferData方法的时候注意这个buffer对象一定是自由的（没有与任何源捆绑），不然会失败。
+	自由的定义是没有对此buffer使用过任何alSourcei(source,AL_BUFFER,buffer);
